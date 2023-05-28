@@ -9,7 +9,9 @@
     <button mat-raised-button class="button-color" (click)="openPublishPopup()">
       <i class="fi fi-sr-house-chimney-medical"></i> Anunciar
     </button>
-    <button mat-raised-button class="button-color"><i class="fi fi-sr-id-card-clip-alt"></i> Entrar</button>
+    <button mat-raised-button class="button-color" (click)="openNewUserPopup()">
+      <i class="fi fi-sr-id-card-clip-alt"></i> Entrar
+    </button>
   </header>
 
   <mat-drawer-container class="container" [formGroup]="formGroup">

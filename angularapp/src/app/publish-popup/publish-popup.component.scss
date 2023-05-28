@@ -50,37 +50,3 @@
 .textWhite {
   color: gainsboro !important
 }
-
-.toolbarHeader {
-  display: flex;
-  justify-content: center;
-  /* Centraliza horizontalmente */
-  align-items: center;
-  /* Centraliza verticalmente */
-  background-color: transparent;
-  padding: 0;
-  font-size: 32px;
-  height: 44px;
-  color: $button;
-}
-
-.toolbarContent {
-  display: flex;
-  justify-content: space-between;
-  /* Alinha os itens ao redor */
-  align-items: center;
-  /* Centraliza verticalmente */
-  width: 100%;
-  padding: 0 16px;
-}
-
-.toolbarTitle {
-  flex: 1;
-  /* Ocupa todo o espaço disponível */
-  text-align: center;
-  /* Centraliza o texto horizontalmente */
-}
-
-.closeButton {
-  font-size: 32px;
-}

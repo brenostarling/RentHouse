@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { propertiesTypes, quantity, pets_const, furniture_const } from '../utils/statics';
 import { properties } from '../utils/dadosMock';
 import { PublishPopupComponent } from './publish-popup/publish-popup.component';
+import { NewUserPopupComponent } from './new-user-popup/new-user-popup.component';
 
 @Component({
   selector: 'app-root',
@@ -113,6 +114,13 @@ export class AppComponent implements OnInit {
 
   openPublishPopup () {
     const dialogRef = this.dialog.open(PublishPopupComponent, { disableClose: true });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Resultado do popup:', result);
+    });
+  }
+  openNewUserPopup () {
+    const dialogRef = this.dialog.open(NewUserPopupComponent, { disableClose: true });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Resultado do popup:', result);

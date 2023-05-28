@@ -17,11 +17,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PublishPopupComponent } from './publish-popup/publish-popup.component';
+import { NewUserPopupComponent } from './new-user-popup/new-user-popup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PublishPopupComponent,
+    NewUserPopupComponent,
   ],
   imports: [
     BrowserModule,
