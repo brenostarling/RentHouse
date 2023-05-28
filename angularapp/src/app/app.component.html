@@ -64,42 +64,46 @@
         </mat-form-field>
 
         <mat-form-field class="example-form-field" appearance="fill">
-          <mat-label>Quartos</mat-label>
+          <mat-label class="mat-primary">Quartos</mat-label>
           <mat-select [formControl]="bedrooms">
-            <mat-option></mat-option>
-            <mat-option *ngFor="let bedrooms of bedroomsList" [value]="bedrooms">{{bedrooms}}</mat-option>
+            <mat-option class="textGainsboro"></mat-option>
+            <mat-option class="textGainsboro" *ngFor="let bedrooms of bedroomsList"
+              [value]="bedrooms">{{bedrooms}}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-form-field" appearance="fill">
           <mat-label>Banheiros</mat-label>
           <mat-select [formControl]="bathrooms">
-            <mat-option></mat-option>
-            <mat-option *ngFor="let bathrooms of bathroomsList" [value]="bathrooms">{{bathrooms}}</mat-option>
+            <mat-option class="textGainsboro"></mat-option>
+            <mat-option class="textGainsboro" *ngFor="let bathrooms of bathroomsList"
+              [value]="bathrooms">{{bathrooms}}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-form-field" appearance="fill">
           <mat-label>Vagas de garagem</mat-label>
           <mat-select [formControl]="carParks">
-            <mat-option></mat-option>
-            <mat-option *ngFor="let carParks of carParksList" [value]="carParks">{{carParks}}</mat-option>
+            <mat-option class="textGainsboro"></mat-option>
+            <mat-option class="textGainsboro" *ngFor="let carParks of carParksList"
+              [value]="carParks">{{carParks}}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-form-field" appearance="fill">
           <mat-label>Mobiliado ?</mat-label>
           <mat-select [formControl]="furniture">
-            <mat-option></mat-option>
-            <mat-option *ngFor="let furniture of furnitureList" [value]="furniture">{{furniture}}</mat-option>
+            <mat-option class="textGainsboro"></mat-option>
+            <mat-option class="textGainsboro" *ngFor="let furniture of furnitureList"
+              [value]="furniture">{{furniture}}</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field class="example-form-field" appearance="fill">
           <mat-label>Pets permitidos ?</mat-label>
           <mat-select [formControl]="pets">
-            <mat-option></mat-option>
-            <mat-option *ngFor="let pets of petsList" [value]="pets">{{pets}}</mat-option>
+            <mat-option class="textGainsboro"></mat-option>
+            <mat-option class="textGainsboro" *ngFor="let pets of petsList" [value]="pets">{{pets}}</mat-option>
           </mat-select>
         </mat-form-field>
       </div>
