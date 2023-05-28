@@ -1,0 +1,109 @@
+<mat-toolbar class="toolbarHeader">
+  <div class="toolbarContent">
+    <span class="toolbarTitle">Novo anúncio</span>
+    <button mat-icon-button mat-dialog-close class="closeButton">
+      <i class="fi fi-rr-cross-small"></i>
+    </button>
+  </div>
+</mat-toolbar>
+
+<form [formGroup]="propertyForm" (ngSubmit)="submitForm()" class="property-form">
+  <mat-form-field class="form-row">
+    <input matInput placeholder="Nome" formControlName="name" required>
+  </mat-form-field>
+
+  <mat-form-field class="form-row">
+    <textarea matInput placeholder="Descrição" formControlName="description"></textarea>
+  </mat-form-field>
+
+  <div class="rowItems">
+    <mat-form-field style="width: 30%;">
+      <mat-select formControlName="type">
+        <mat-option class="textWhite" value="">Tipo de imóvel</mat-option>
+        <mat-option class="textWhite" *ngFor="let propertyType of propertyTypes" [value]="propertyType.value">
+          {{ propertyType.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style="width: 30%;">
+      <mat-select formControlName="pets">
+        <mat-option class="textWhite" value="">Aceita pets?</mat-option>
+        <mat-option class="textWhite" *ngFor="let petOption of petOptions" [value]="petOption.value">
+          {{ petOption.label}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field style="width: 30%;">
+      <mat-select formControlName="furniture">
+        <mat-option class="textWhite" value="">Mobiliado?</mat-option>
+        <mat-option class="textWhite" *ngFor="let furnitureOption of furnitureOptions" [value]="furnitureOption.value">
+          {{ furnitureOption.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="rowItems">
+    <mat-form-field class="price-row">
+      <input matInput placeholder="Preço" type="number" formControlName="price" required>
+    </mat-form-field>
+
+    <mat-form-field class="area-row">
+      <input matInput placeholder="Área total" type="number" formControlName="totalArea">
+    </mat-form-field>
+
+    <mat-form-field class="unit-row">
+      <input matInput placeholder="Quartos" type="number" formControlName="bedrooms">
+    </mat-form-field>
+
+    <mat-form-field class="unit-row">
+      <input matInput placeholder="Banheiros" type="number" formControlName="bathrooms">
+    </mat-form-field>
+
+    <mat-form-field class="unit-row">
+      <input matInput placeholder="Vagas" type="number" formControlName="carGarage">
+    </mat-form-field>
+  </div>
+
+  <div class="addressContainer">
+    <div class="rowItems">
+      <mat-form-field style="width: 30%">
+        <input matInput placeholder="CEP" formControlName="zipcode" required (blur)="searchAddress()">
+      </mat-form-field>
+
+      <mat-form-field style="width: 40%">
+        <input matInput placeholder="Cidade" formControlName="city" required>
+      </mat-form-field>
+
+      <mat-form-field style="width: 20%">
+        <input matInput placeholder="UF" formControlName="state" required>
+      </mat-form-field>
+    </div>
+
+    <div class="rowItems">
+      <mat-form-field style="width: 70%">
+        <input matInput placeholder="Rua" formControlName="street" required>
+      </mat-form-field>
+
+      <mat-form-field style="width: 25%">
+        <input matInput placeholder="Número" formControlName="number" required>
+      </mat-form-field>
+    </div>
+
+    <div class="rowItems">
+      <mat-form-field style="width: 35%">
+        <input matInput placeholder="Bairro" formControlName="neighborhood" required>
+      </mat-form-field>
+
+      <mat-form-field style="width: 60%">
+        <input matInput placeholder="Complemento" formControlName="complement">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="form-row button-row">
+    <button mat-raised-button color="primary" type="submit">Cadastrar</button>
+  </div>
+</form>

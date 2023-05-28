@@ -5,7 +5,12 @@
 $primary: #202225;
 $secondary: #2f3136;
 $terciary: #36393f;
+$dialog: #31343a;
 $button: #3f51b5;
+
+.mat-dialog-container {
+  background-color: $dialog;
+}
 
 .primary {
   background-color: $primary;

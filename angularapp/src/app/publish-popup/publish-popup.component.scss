@@ -1,0 +1,86 @@
+@import '/src/styles.scss';
+@import '@flaticon/flaticon-uicons/css/all/all.css';
+
+.property-form {
+  display: flex;
+  flex-direction: column;
+  width: 60vw;
+  max-height: 90vh;
+  padding: 12px;
+}
+
+.form-row {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.price-row {
+  width: 30%;
+  margin-bottom: 16px;
+}
+
+.area-row {
+  width: 20%;
+  margin-bottom: 16px;
+}
+
+.unit-row {
+  width: 10%;
+  margin-bottom: 16px;
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rowItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.addressContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.textWhite {
+  color: gainsboro !important
+}
+
+.toolbarHeader {
+  display: flex;
+  justify-content: center;
+  /* Centraliza horizontalmente */
+  align-items: center;
+  /* Centraliza verticalmente */
+  background-color: transparent;
+  padding: 0;
+  font-size: 32px;
+  height: 44px;
+  color: $button;
+}
+
+.toolbarContent {
+  display: flex;
+  justify-content: space-between;
+  /* Alinha os itens ao redor */
+  align-items: center;
+  /* Centraliza verticalmente */
+  width: 100%;
+  padding: 0 16px;
+}
+
+.toolbarTitle {
+  flex: 1;
+  /* Ocupa todo o espaço disponível */
+  text-align: center;
+  /* Centraliza o texto horizontalmente */
+}
+
+.closeButton {
+  font-size: 32px;
+}

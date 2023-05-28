@@ -112,10 +112,7 @@ export class AppComponent implements OnInit {
   }
 
   openPublishPopup () {
-    const dialogRef = this.dialog.open(PublishPopupComponent, {
-      width: '50%',
-      height: '90%'
-    });
+    const dialogRef = this.dialog.open(PublishPopupComponent, { disableClose: true });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Resultado do popup:', result);
