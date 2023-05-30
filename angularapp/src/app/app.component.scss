@@ -69,47 +69,6 @@ p {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-.toolbar-filter {
-  background-color: $secondary;
-  color: $button;
-  padding-bottom: 12px;
-  font-size: 32px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.formFilters {
-  flex-grow: 1;
-  overflow-y: auto;
-}
-
-.fixed-drawer .toolbar-filter {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-.fixed-drawer .formFilters {
-  overflow-y: auto;
-  max-height: 100vh;
-}
-
-.button-wrapper {
-  position: sticky;
-  background-color: $secondary;
-  bottom: 0;
-  z-index: 1;
-  padding: 16px 16px 0 16px;
-}
-
-.toolbar-filter {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
 .listProperties {
   width: calc(100% - 32px);
   height: calc(100% - 32px);
@@ -214,10 +173,6 @@ p {
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
-}
-
-.textGainsboro {
-  color: gainsboro !important
 }
 
 /* Estilos responsivos */
