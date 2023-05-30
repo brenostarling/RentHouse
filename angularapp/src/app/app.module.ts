@@ -20,8 +20,8 @@ import { PublishPopupComponent } from './publish-popup/publish-popup.component';
 import { NewUserPopupComponent } from './new-user-popup/new-user-popup.component';
 import { LoginPopupComponent } from './login-popup/login-popup.component';
 import { MenuFiltersComponent } from './menu-filters/menu-filters.component';
+import { PostsPageComponent } from './posts-page/posts-page.component';
 // import { NavHeaderComponent } from './nav-header/nav-header.component';
-// import { PostsPageComponent } from './posts-page/posts-page.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +30,8 @@ import { MenuFiltersComponent } from './menu-filters/menu-filters.component';
     NewUserPopupComponent,
     LoginPopupComponent,
     MenuFiltersComponent,
+    PostsPageComponent,
     // NavHeaderComponent,
-    // PostsPageComponent,
   ],
   imports: [
     BrowserModule,

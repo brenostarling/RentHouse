@@ -1,0 +1,34 @@
+<mat-list class="listProperties">
+  <mat-list-item *ngFor="let house of properties" class="listItem">
+    <div class="photoSlot">
+      <img [src]="getThumbnailPath(house)" alt="House Image" class="photoitem">
+    </div>
+
+    <div class="itemContent">
+      <div class="listItemContent">
+        <div class="topSection">
+          <h1 matLine class="nameProperty">{{ house.name }}</h1>
+          <p matLine class="mainInformations">{{ house.type }} | R$ {{ formatLabel(house.price) }}
+          </p>
+          <a class="addressInformation">{{ house.description }}</a>
+        </div>
+
+        <div class="bottomSection">
+          <a class="addressInformation"><i class="fi fi-rr-map-marker"></i> {{ getAddress(house) }}</a>
+          <div class="iconsCard">
+            <div class="iconsItem"><i class="fi fi-rr-ruler-combined"></i> {{ house.totalarea + 'm²' }}</div>
+            <div class="iconsItem"><i class="fi fi-rr-bed"></i> {{ house.bedrooms }}</div>
+            <div class="iconsItem"><i class="fi fi-rr-hot-tub"></i> {{ house.bathrooms }}</div>
+            <div class="iconsItem"><i class="fi fi-rr-garage-car"></i> {{ house.cargarage }}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="buttonSection">
+        <button mat-button class="buttonCard" color="primary"><i class="fi fi-rr-eye"></i> Ver mais</button>
+        <button mat-button class="buttonCard" color="accent"><i class="fi fi-rr-paper-plane"></i> Entrar em
+          contato</button>
+      </div>
+    </div>
+  </mat-list-item>
+</mat-list>
