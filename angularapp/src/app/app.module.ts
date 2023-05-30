@@ -18,12 +18,20 @@ import { MatListModule } from '@angular/material/list';
 import { MatDialogModule } from '@angular/material/dialog';
 import { PublishPopupComponent } from './publish-popup/publish-popup.component';
 import { NewUserPopupComponent } from './new-user-popup/new-user-popup.component';
+import { LoginPopupComponent } from './login-popup/login-popup.component';
+// import { MenuFiltersComponent } from './menu-filters/menu-filters.component';
+// import { NavHeaderComponent } from './nav-header/nav-header.component';
+// import { PostsPageComponent } from './posts-page/posts-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PublishPopupComponent,
     NewUserPopupComponent,
+    LoginPopupComponent,
+    // MenuFiltersComponent,
+    // NavHeaderComponent,
+    // PostsPageComponent,
   ],
   imports: [
     BrowserModule,

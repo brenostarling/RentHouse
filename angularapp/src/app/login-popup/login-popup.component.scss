@@ -1,0 +1,43 @@
+@import '/src/styles.scss';
+@import '@flaticon/flaticon-uicons/css/all/all.css';
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+}
+
+.form-row {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+}
+
+.register-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 8px 0;
+}
+
+.accountText {
+  color: gainsboro;
+  font-size: 16px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.newUserButton {
+  font-size: 16px;
+  color: $button;
+  padding-left: 8px;
+  padding-right: 0px;
+}
