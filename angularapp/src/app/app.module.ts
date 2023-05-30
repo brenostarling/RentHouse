@@ -21,7 +21,7 @@ import { NewUserPopupComponent } from './new-user-popup/new-user-popup.component
 import { LoginPopupComponent } from './login-popup/login-popup.component';
 import { MenuFiltersComponent } from './menu-filters/menu-filters.component';
 import { PostsPageComponent } from './posts-page/posts-page.component';
-// import { NavHeaderComponent } from './nav-header/nav-header.component';
+import { NavHeaderComponent } from './nav-header/nav-header.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import { PostsPageComponent } from './posts-page/posts-page.component';
     LoginPopupComponent,
     MenuFiltersComponent,
     PostsPageComponent,
-    // NavHeaderComponent,
+    NavHeaderComponent,
   ],
   imports: [
     BrowserModule,

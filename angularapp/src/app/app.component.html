@@ -1,18 +1,5 @@
 <div class="container">
-  <header class="toolbar" role="banner">
-    <button mat-icon-button class="menu-button" (click)="drawer.toggle()">
-      <i class="fi fi-br-menu-burger"></i>
-    </button>
-    <img width="40" alt="Angular Logo" src="assets/logo.svg" class="marca" />
-    <span class="title">RentHouse</span>
-    <div class="spacer"></div>
-    <button mat-raised-button class="button-color" (click)="openPublishPopup()">
-      <i class="fi fi-sr-house-chimney-medical"></i> Anunciar
-    </button>
-    <button mat-raised-button class="button-color" (click)="openLoginPopup()">
-      <i class="fi fi-sr-id-card-clip-alt"></i> Entrar
-    </button>
-  </header>
+  <app-nav-header (toggleDrawer)="drawer.toggle()"></app-nav-header>
 
   <mat-drawer-container class="container">
     <mat-drawer #drawer class="sidenav" mode="side" opened>
