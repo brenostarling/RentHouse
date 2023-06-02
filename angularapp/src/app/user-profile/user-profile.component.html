@@ -1,0 +1,50 @@
+<mat-toolbar class="toolbarHeader">
+  <div class="toolbarContent">
+    <span class="toolbarTitle">Editar usuário</span>
+    <button mat-icon-button mat-dialog-close class="closeButton">
+      <i class="fi fi-rr-cross-small"></i>
+    </button>
+  </div>
+</mat-toolbar>
+
+<form [formGroup]="userForm" (ngSubmit)="submitForm()" class="user-form">
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Senha" type="password" formControlName="password" required>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Nova senha" type="password" formControlName="newPassword">
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="CPF" formControlName="cpf">
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="CNPJ" formControlName="cnpj">
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Telefone" formControlName="phone">
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Nome completo" formControlName="fullname">
+    </mat-form-field>
+  </div>
+
+  <div class="form-row button-row">
+    <button mat-raised-button color="primary" type="submit">Salvar</button>
+  </div>
+</form>

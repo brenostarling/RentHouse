@@ -14,9 +14,15 @@
     <i class="fi fi-sr-id-card-clip-alt"></i> Entrar
   </button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item class="buttonUserActions"><i class="fi fi-rs-user-pen"></i> Editar conta</button>
-    <button mat-menu-item class="buttonUserActions"><i class="fi fi-rs-house-chimney"></i> Meus anúncios</button>
+    <button mat-menu-item class="buttonUserActions" (click)="openUserProfile()">
+      <i class="fi fi-rs-user-pen"></i> Editar conta
+    </button>
+    <button mat-menu-item class="buttonUserActions">
+      <i class="fi fi-rs-house-chimney"></i> Meus anúncios
+    </button>
     <mat-divider></mat-divider>
-    <button mat-menu-item class="buttonUserActions"><i class="fi fi-rs-sign-out-alt"></i> Logoff</button>
+    <button mat-menu-item class="buttonUserActions">
+      <i class="fi fi-rs-sign-out-alt"></i> Logoff
+    </button>
   </mat-menu>
 </header>

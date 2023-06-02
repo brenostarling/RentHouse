@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PublishPopupComponent } from '../publish-popup/publish-popup.component';
 import { LoginPopupComponent } from '../login-popup/login-popup.component';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 @Component({
   selector: 'app-nav-header',
@@ -33,6 +34,14 @@ export class NavHeaderComponent implements OnInit {
 
   openLoginPopup () {
     const dialogRef = this.dialog.open(LoginPopupComponent, {});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Resultado do popup:', result);
+    });
+  }
+
+  openUserProfile () {
+    const dialogRef = this.dialog.open(UserProfileComponent, {});
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('Resultado do popup:', result);

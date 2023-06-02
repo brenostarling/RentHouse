@@ -47,12 +47,8 @@ p {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
 
-::ng-deep .mat-menu-content.ng-tns-c105-1 {
-  background-color: $primary;
-}
-
 ::ng-deep .mat-menu-panel {
-  background-color: transparent;
+  background-color: $primary;
 }
 
 .buttonUserActions {
