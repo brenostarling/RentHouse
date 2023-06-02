@@ -25,7 +25,7 @@ import { MenuFiltersComponent } from './menu-filters/menu-filters.component';
 import { PostsPageComponent } from './posts-page/posts-page.component';
 import { NavHeaderComponent } from './nav-header/nav-header.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
-// import { MyPostsComponent } from './my-posts/my-posts.component';
+import { MyPostsComponent } from './my-posts/my-posts.component';
 // import { EditPostPopupComponent } from './edit-post-popup/edit-post-popup.component';
 // import { ContactPopupComponent } from './contact-popup/contact-popup.component';
 // import { SeeMorePopupComponent } from './see-more-popup/see-more-popup.component';
@@ -40,7 +40,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     PostsPageComponent,
     NavHeaderComponent,
     UserProfileComponent,
-    // MyPostsComponent,
+    MyPostsComponent,
     // EditPostPopupComponent,
     // ContactPopupComponent,
     // SeeMorePopupComponent,
