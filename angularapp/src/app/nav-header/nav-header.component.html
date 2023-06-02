@@ -8,7 +8,15 @@
   <button mat-raised-button class="button-color" (click)="openPublishPopup()">
     <i class="fi fi-sr-house-chimney-medical"></i> Anunciar
   </button>
-  <button mat-raised-button class="button-color" (click)="openLoginPopup()">
+  <button mat-raised-button class="button-color" [matMenuTriggerFor]="menu" *ngIf="login">
+    <i class="fi fi-rs-user-gear"></i> Minha conta</button>
+  <button mat-raised-button class="button-color" (click)="openLoginPopup()" *ngIf="!login">
     <i class="fi fi-sr-id-card-clip-alt"></i> Entrar
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item class="buttonUserActions"><i class="fi fi-rs-user-pen"></i> Editar conta</button>
+    <button mat-menu-item class="buttonUserActions"><i class="fi fi-rs-house-chimney"></i> Meus anúncios</button>
+    <mat-divider></mat-divider>
+    <button mat-menu-item class="buttonUserActions"><i class="fi fi-rs-sign-out-alt"></i> Logoff</button>
+  </mat-menu>
 </header>

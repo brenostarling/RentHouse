@@ -10,6 +10,7 @@ import { LoginPopupComponent } from '../login-popup/login-popup.component';
 })
 export class NavHeaderComponent implements OnInit {
   title = 'RentHouse';
+  login = true
 
   constructor(private dialog: MatDialog) { }
 
