@@ -34,7 +34,8 @@
       </div>
 
       <div class="buttonSection">
-        <button mat-button class="buttonCard" color="primary"><i class="fi fi-rs-edit"></i> Editar anuncio</button>
+        <button mat-button class="buttonCard" color="primary" (click)="openEditPopup()"><i class="fi fi-rs-edit"></i>
+          Editar anuncio</button>
         <button mat-button class="buttonCard" color="accent"><i class="fi fi-rs-sign-hanging"></i> Mudar status para
           "{{'Alugado' || 'Disponível'}}"</button>
       </div>
