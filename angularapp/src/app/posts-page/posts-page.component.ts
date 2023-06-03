@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { properties } from '../../utils/dadosMock';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactPopupComponent } from '../contact-popup/contact-popup.component'
 
 @Component({
   selector: 'app-posts-page',
@@ -9,7 +11,7 @@ import { properties } from '../../utils/dadosMock';
 export class PostsPageComponent implements OnInit {
 
   properties: any[] = properties;
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit (): void {
   }
@@ -28,6 +30,14 @@ export class PostsPageComponent implements OnInit {
     let Address = `${house.street}, ${house.number} - ${house.neighborhood}, ${house.city} - ${house.state}, ${house.zipcode}`
     if (house.complement) Address += ` - (${house.complement})`
     return Address;
+  }
+
+  openContactPopup () {
+    const dialogRef = this.dialog.open(ContactPopupComponent, {});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Resultado do popup:', result);
+    });
   }
 
 }
