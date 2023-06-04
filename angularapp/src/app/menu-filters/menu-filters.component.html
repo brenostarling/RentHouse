@@ -1,0 +1,95 @@
+<mat-toolbar class="toolbar-filter">
+  <span>Filtros</span>
+</mat-toolbar>
+
+<div class="formFilters" [formGroup]="filterForm">
+  <mat-form-field class="filters-form-field">
+    <mat-label class="mat-primary">Tipo de imóvel</mat-label>
+    <mat-select [formControl]="types" multiple>
+      <mat-option *ngFor="let type of typeList" [value]="type" class="custom-option">{{type}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Preço mínimo</mat-label>
+    <input matInput placeholder="500.00" formControlName="minprice">
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Preço máximo</mat-label>
+    <input matInput placeholder="500.00" formControlName="maxprice">
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>CEP</mat-label>
+    <input matInput placeholder="12345-678" formControlName="zipcode" (blur)="searchAddress()">
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Rua</mat-label>
+    <input matInput placeholder="Rua Um" formControlName="street">
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Bairro</mat-label>
+    <input matInput placeholder="Copacabana" formControlName="neighborhood">
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Cidade</mat-label>
+    <input matInput placeholder="Rio de Janeiro" formControlName="city">
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Estado</mat-label>
+    <input matInput placeholder="RJ" formControlName="state">
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label class="mat-primary">Quartos</mat-label>
+    <mat-select [formControl]="bedrooms">
+      <mat-option class="textGainsboro"></mat-option>
+      <mat-option class="textGainsboro" *ngFor="let bedrooms of bedroomsList"
+        [value]="bedrooms">{{bedrooms}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Banheiros</mat-label>
+    <mat-select [formControl]="bathrooms">
+      <mat-option class="textGainsboro"></mat-option>
+      <mat-option class="textGainsboro" *ngFor="let bathrooms of bathroomsList"
+        [value]="bathrooms">{{bathrooms}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Vagas de garagem</mat-label>
+    <mat-select [formControl]="carParks">
+      <mat-option class="textGainsboro"></mat-option>
+      <mat-option class="textGainsboro" *ngFor="let carParks of carParksList"
+        [value]="carParks">{{carParks}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Mobiliado ?</mat-label>
+    <mat-select [formControl]="furniture">
+      <mat-option class="textGainsboro"></mat-option>
+      <mat-option class="textGainsboro" *ngFor="let furniture of furnitureList"
+        [value]="furniture">{{furniture}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="filters-form-field" appearance="fill">
+    <mat-label>Pets permitidos ?</mat-label>
+    <mat-select [formControl]="pets">
+      <mat-option class="textGainsboro"></mat-option>
+      <mat-option class="textGainsboro" *ngFor="let pets of petsList" [value]="pets">{{pets}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<div class="button-wrapper">
+  <button mat-raised-button class="button-fullwidth"><i class="fi fi-br-search"></i> Filtrar</button>
+</div>

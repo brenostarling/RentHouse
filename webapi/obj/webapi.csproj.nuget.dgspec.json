@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\ProjetosParticulares\\RentHouse1\\RentHouse\\webapi\\webapi.csproj": {}
+    "E:\\ProjetosParticulares\\RentHouse\\webapi\\webapi.csproj": {}
   },
   "projects": {
-    "E:\\ProjetosParticulares\\RentHouse1\\RentHouse\\webapi\\webapi.csproj": {
+    "E:\\ProjetosParticulares\\RentHouse\\webapi\\webapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\ProjetosParticulares\\RentHouse1\\RentHouse\\webapi\\webapi.csproj",
+        "projectUniqueName": "E:\\ProjetosParticulares\\RentHouse\\webapi\\webapi.csproj",
         "projectName": "webapi",
-        "projectPath": "E:\\ProjetosParticulares\\RentHouse1\\RentHouse\\webapi\\webapi.csproj",
+        "projectPath": "E:\\ProjetosParticulares\\RentHouse\\webapi\\webapi.csproj",
         "packagesPath": "C:\\Users\\breno\\.nuget\\packages\\",
-        "outputPath": "E:\\ProjetosParticulares\\RentHouse1\\RentHouse\\webapi\\obj\\",
+        "outputPath": "E:\\ProjetosParticulares\\RentHouse\\webapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\breno\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,17 +41,19 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.AspNetCore.OpenApi": {
+            "Microsoft.Azure.Search.Data": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[10.1.0, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
             },
-            "MySql.Data.EntityFrameworkCore": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.22, )"
+              "version": "[7.0.5, )"
             },
             "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
@@ -59,7 +61,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[6.5.0, )"
             }
           },
           "imports": [

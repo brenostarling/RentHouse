@@ -1,0 +1,62 @@
+@import '/src/styles.scss';
+
+.toolbar-filter {
+  background-color: $secondary;
+  color: $button;
+  padding-bottom: 12px;
+  font-size: 32px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.formFilters {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.fixed-drawer .toolbar-filter {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.fixed-drawer .formFilters {
+  overflow-y: auto;
+  max-height: 100vh;
+}
+
+.filters-form-field {
+  width: 95%;
+  color: gainsboro;
+  padding: 0px;
+}
+
+.mat-primary {
+  color: gainsboro;
+}
+
+.custom-option.mat-option {
+  background-color: $terciary;
+  color: gainsboro;
+}
+
+.custom-option.mat-selected {
+  background-color: $terciary;
+}
+
+.textGainsboro {
+  color: gainsboro !important
+}
+
+.button-wrapper {
+  position: sticky;
+  background-color: $secondary;
+  bottom: 0;
+  z-index: 1;
+  padding: 16px 16px 0 16px;
+}

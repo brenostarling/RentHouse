@@ -1,0 +1,34 @@
+<mat-toolbar class="toolbarHeader">
+  <div class="toolbarContent">
+    <span class="toolbarTitle">Login</span>
+    <button mat-icon-button mat-dialog-close class="closeButton">
+      <i class="fi fi-rr-cross-small"></i>
+    </button>
+  </div>
+</mat-toolbar>
+
+<form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="login-form">
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="E-mail" formControlName="email" required>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row">
+    <mat-form-field class="form-field">
+      <input matInput placeholder="Senha" type="password" formControlName="password" required>
+    </mat-form-field>
+  </div>
+
+  <div class="form-row button-row">
+    <button mat-raised-button color="primary" type="submit" style="width: 50%">Login</button>
+  </div>
+
+  <div class="register-row">
+    <a class="accountText">Não tem uma conta ? </a>
+    <button mat-button mat-dialog-close class="newUserButton" (click)="openNewUserPopup()">
+      Cadastre-se aqui !
+    </button>
+  </div>
+
+</form>
