@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { properties } from '../../utils/dadosMock';
 import { MatDialog } from '@angular/material/dialog';
-import { EditPostPopupComponent } from '../edit-post-popup/edit-post-popup.component'
+import { EditPostPopupComponent } from '../edit-post-popup/edit-post-popup.component';
+
 @Component({
   selector: 'app-my-posts',
   templateUrl: './my-posts.component.html',
@@ -10,6 +11,8 @@ import { EditPostPopupComponent } from '../edit-post-popup/edit-post-popup.compo
 export class MyPostsComponent implements OnInit {
 
   properties: any[] = properties;
+  @Output() closeEvent: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   constructor(private dialog: MatDialog) { }
 
   ngOnInit (): void {
@@ -26,8 +29,8 @@ export class MyPostsComponent implements OnInit {
   }
 
   getAddress (house: any): string | undefined {
-    let Address = `${house.street}, ${house.number} - ${house.neighborhood}, ${house.city} - ${house.state}, ${house.zipcode}`
-    if (house.complement) Address += ` - (${house.complement})`
+    let Address = `${house.street}, ${house.number} - ${house.neighborhood}, ${house.city} - ${house.state}, ${house.zipcode}`;
+    if (house.complement) Address += ` - (${house.complement})`;
     return Address;
   }
 
@@ -39,4 +42,7 @@ export class MyPostsComponent implements OnInit {
     });
   }
 
+  emitCloseEvent (): void {
+    this.closeEvent.emit(false);
+  }
 }

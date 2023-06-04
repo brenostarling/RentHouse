@@ -17,11 +17,11 @@
     <button mat-menu-item class="buttonUserActions" (click)="openUserProfile()">
       <i class="fi fi-rs-user-pen"></i> Editar conta
     </button>
-    <button mat-menu-item class="buttonUserActions">
+    <button mat-menu-item class="buttonUserActions" (click)="handleMyPostsClick()">
       <i class="fi fi-rs-house-chimney"></i> Meus anúncios
     </button>
     <mat-divider></mat-divider>
-    <button mat-menu-item class="buttonUserActions">
+    <button mat-menu-item class="buttonUserActions" (click)="logoff()">
       <i class="fi fi-rs-sign-out-alt"></i> Logoff
     </button>
   </mat-menu>

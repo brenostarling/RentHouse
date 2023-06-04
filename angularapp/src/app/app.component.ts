@@ -8,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
 
 export class AppComponent implements OnInit {
   title = 'RentHouse';
+  myPosts = false;
 
   constructor() { }
 
   ngOnInit (): void { }
+
+  handleToggleMyPosts (value: boolean) {
+    this.myPosts = value;
+  }
 }

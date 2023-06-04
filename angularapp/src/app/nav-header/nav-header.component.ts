@@ -11,7 +11,7 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
 })
 export class NavHeaderComponent implements OnInit {
   title = 'RentHouse';
-  login = true
+  login = true;
 
   constructor(private dialog: MatDialog) { }
 
@@ -19,6 +19,16 @@ export class NavHeaderComponent implements OnInit {
   }
 
   @Output() toggleDrawer: EventEmitter<void> = new EventEmitter<void>();
+  @Output() toggleMyPosts: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  logoff () {
+    this.login = false;
+    this.toggleMyPosts.emit(false);
+  }
+
+  handleMyPostsClick () {
+    this.toggleMyPosts.emit(true);
+  }
 
   onToggleDrawer () {
     this.toggleDrawer.emit();
