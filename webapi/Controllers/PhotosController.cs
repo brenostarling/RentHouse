@@ -1,9 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using RentHouse.Data;
 using RentHouse.Models;
 
@@ -13,25 +11,26 @@ namespace RentHouse.Controllers
     [ApiController]
     public class PhotosController : ControllerBase
     {
-        private readonly RentHouseContext _context;
+        private readonly IPhotosRepository _photosRepository;
 
-        public PhotosController(RentHouseContext context)
+        public PhotosController(IPhotosRepository photosRepository)
         {
-            _context = context;
+            _photosRepository = photosRepository;
         }
 
         // GET: api/Photos
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Photos>>> GetPhotos()
         {
-            return await _context.Photos.ToListAsync();
+            var photos = await _photosRepository.GetPhotosAsync();
+            return Ok(photos);
         }
 
         // GET: api/Photos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Photos>> GetPhoto(int id)
         {
-            var photo = await _context.Photos.FindAsync(id);
+            var photo = await _photosRepository.GetPhotoAsync(id);
 
             if (photo == null)
             {
@@ -45,24 +44,22 @@ namespace RentHouse.Controllers
         [HttpGet("ByProperty/{idProperty}")]
         public async Task<ActionResult<IEnumerable<Photos>>> GetPhotosByProperty(int idProperty)
         {
-            var photos = await _context.Photos.Where(p => p.PropertyId == idProperty).ToListAsync();
+            var photos = await _photosRepository.GetPhotosByPropertyAsync(idProperty);
 
-            if (photos == null || photos.Count == 0)
+            if (photos == null || !photos.Any())
             {
                 return NotFound();
             }
 
-            return photos;
+            return Ok(photos);
         }
 
         // POST: api/Photos
         [HttpPost]
         public async Task<ActionResult<Photos>> CreatePhoto(Photos photo)
         {
-            _context.Photos.Add(photo);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetPhoto", new { id = photo.Id }, photo);
+            await _photosRepository.CreatePhotoAsync(photo);
+            return CreatedAtAction(nameof(GetPhoto), new { id = photo.Id }, photo);
         }
 
         // PUT: api/Photos/5
@@ -74,23 +71,14 @@ namespace RentHouse.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(photo).State = EntityState.Modified;
+            var existingPhoto = await _photosRepository.GetPhotoAsync(id);
 
-            try
+            if (existingPhoto == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PhotoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+
+            await _photosRepository.UpdatePhotoAsync(id, photo);
 
             return NoContent();
         }
@@ -99,21 +87,16 @@ namespace RentHouse.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePhoto(int id)
         {
-            var photo = await _context.Photos.FindAsync(id);
-            if (photo == null)
+            var existingPhoto = await _photosRepository.GetPhotoAsync(id);
+
+            if (existingPhoto == null)
             {
                 return NotFound();
             }
 
-            _context.Photos.Remove(photo);
-            await _context.SaveChangesAsync();
+            await _photosRepository.DeletePhotoAsync(id);
 
             return NoContent();
-        }
-
-        private bool PhotoExists(int id)
-        {
-            return _context.Photos.Any(e => e.Id == id);
         }
     }
 }

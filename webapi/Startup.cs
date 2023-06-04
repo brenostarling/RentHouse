@@ -4,8 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-using MySql.Data.EntityFrameworkCore.Extensions;
-using Pomelo.EntityFrameworkCore.MySql;
 using RentHouse.Data;
 
 namespace RentHouse
@@ -24,8 +22,11 @@ namespace RentHouse
             services.AddControllers();
 
             services.AddDbContext<RentHouseContext>(options =>
-            options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 26))));
 
+            services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IPhotosRepository, PhotosRepository>();
+            services.AddScoped<IPropertiesRepository, PropertiesRepository>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

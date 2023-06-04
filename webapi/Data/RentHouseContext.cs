@@ -9,9 +9,9 @@ namespace RentHouse.Data
         {
         }
 
-        public DbSet<Property>? Properties { get; set; }
-        public DbSet<User>? Users { get; set; }
-        public DbSet<Photos>? Photos { get; set; }
+        public DbSet<Property> Properties { get; set; } = null!;
+        public DbSet<User> Users { get; set; } = null!;
+        public DbSet<Photos> Photos { get; set; } = null!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
