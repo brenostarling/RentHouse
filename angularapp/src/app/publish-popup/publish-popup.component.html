@@ -103,6 +103,25 @@
     </div>
   </div>
 
+  <mat-toolbar class="toolbarHeader" style="margin: 24px 0;">
+    <div class="toolbarContent">
+      <span class="toolbarTitle">Adicionar imagens</span>
+    </div>
+  </mat-toolbar>
+
+  <div class="form-row">
+    <input type="file" (change)="onFileSelected($event)" multiple accept="image/*">
+  </div>
+
+  <div class="photos-row" *ngIf="propertyForm.controls.photos.value.length > 0">
+    <div class="photo-preview" *ngFor="let photo of propertyForm.controls.photos.value; let i = index">
+      <img [src]="getSafeUrl(photo.url)" alt="Preview" class="preview-image">
+      <mat-form-field class="captionField">
+        <input matInput placeholder="Legenda" [formControl]="getCaptionControl(i)" class="textWhite">
+      </mat-form-field>
+    </div>
+  </div>
+
   <div class="form-row button-row">
     <button mat-raised-button color="primary" type="submit">Cadastrar</button>
   </div>

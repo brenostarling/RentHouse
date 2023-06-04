@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormArray, FormControl } from '@angular/forms';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { propertiesTypes, pets_const, furniture_const } from '../../utils/statics'
 import { HttpClient } from '@angular/common/http';
 
@@ -13,8 +14,13 @@ export class PublishPopupComponent implements OnInit {
   propertyTypes = propertiesTypes;
   petOptions = pets_const;
   furnitureOptions = furniture_const;
+  captionControls: FormControl[] = [];
 
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private http: HttpClient,
+    private sanitizer: DomSanitizer
+  ) { }
 
   ngOnInit (): void {
     this.initForm();
@@ -39,15 +45,61 @@ export class PublishPopupComponent implements OnInit {
       state: ['', Validators.required],
       zipcode: ['', Validators.required],
       complement: [''],
-      description: ['']
+      description: [''],
+      photos: this.formBuilder.array([]) // Adicionado array para as fotos
     });
+
+    this.photosFormArray.valueChanges.subscribe(() => {
+      this.updateCaptionControls();
+    });
+  }
+
+  get photosFormArray (): FormArray {
+    return this.propertyForm.get('photos') as FormArray;
+  }
+
+  updateCaptionControls (): void {
+    const photosLength = this.photosFormArray.length;
+    const captionsLength = this.captionControls.length;
+
+    if (photosLength > captionsLength) {
+      for (let i = captionsLength; i < photosLength; i++) {
+        this.captionControls.push(this.formBuilder.control(''));
+      }
+    } else if (photosLength < captionsLength) {
+      for (let i = captionsLength - 1; i >= photosLength; i--) {
+        this.captionControls[i].reset();
+        this.captionControls.splice(i, 1);
+      }
+    }
+  }
+
+  getCaptionControl (index: number): FormControl {
+    return this.captionControls[index];
+  }
+
+  getSafeUrl (url: string): SafeUrl {
+    return this.sanitizer.bypassSecurityTrustUrl(url);
+  }
+
+  onFileSelected (event: any): void {
+    const files = event.target.files;
+    for (const file of files) {
+      this.photosFormArray.push(
+        this.formBuilder.group({
+          file: [file],
+          url: [URL.createObjectURL(file)],
+          caption: ['']
+        })
+      );
+    }
   }
 
   submitForm (): void {
     console.log(this.propertyForm.value);
   }
 
-  async searchAddress () {
+  async searchAddress (): Promise<void> {
     const cep = this.propertyForm.get('zipcode')?.value;
     if (cep) {
       try {
