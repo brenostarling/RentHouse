@@ -28,7 +28,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { MyPostsComponent } from './my-posts/my-posts.component';
 import { EditPostPopupComponent } from './edit-post-popup/edit-post-popup.component';
 import { ContactPopupComponent } from './contact-popup/contact-popup.component';
-// import { SeeMorePopupComponent } from './see-more-popup/see-more-popup.component';
+import { SeeMorePopupComponent } from './see-more-popup/see-more-popup.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +43,7 @@ import { ContactPopupComponent } from './contact-popup/contact-popup.component';
     MyPostsComponent,
     EditPostPopupComponent,
     ContactPopupComponent,
-    // SeeMorePopupComponent,
+    SeeMorePopupComponent,
   ],
   imports: [
     BrowserModule,

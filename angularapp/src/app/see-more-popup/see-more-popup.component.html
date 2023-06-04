@@ -1,0 +1,35 @@
+<mat-toolbar class="toolbarHeader">
+  <div class="toolbarContent">
+    <span class="toolbarTitle">{{ house.name }}</span>
+    <button mat-icon-button mat-dialog-close class="closeButton">
+      <i class="fi fi-rr-cross-small"></i>
+    </button>
+  </div>
+</mat-toolbar>
+
+<div class="container">
+  <div class="photos">
+    <span class="arrowLeft" (click)="nextPhoto()">&lt;</span>
+    <img [src]="house.photos[currentPhotoIndex].path" class="image">
+    <span class="arrowRight" (click)="previousPhoto()">&gt;</span>
+  </div>
+  <div class="type">
+    <i class="icon fi fi-rs-house-building"></i> {{house.type}}
+  </div>
+  <div class="description">
+    {{ house.description }}
+  </div>
+  <div class="address">
+    <i class="icon fi fi-rr-map-marker"></i> {{ getAddress(house) }}
+  </div>
+  <div class="icons">
+    <p class="iconItem"><i class="icon fi fi-rr-ruler-combined"></i> {{ house.totalarea + 'm²' }}</p>
+    <p class="iconItem"><i class="icon fi fi-rr-bed"></i> {{ house.bedrooms }}</p>
+    <p class="iconItem"><i class="icon fi fi-rr-hot-tub"></i> {{ house.bathrooms }}</p>
+    <p class="iconItem"><i class="icon fi fi-rr-garage-car"></i> {{ house.cargarage }}</p>
+  </div>
+
+  <button mat-button class="buttonCard" color="accent" (click)="openContactPopup()">
+    <i class="fi fi-rr-paper-plane"></i> Entrar em contato
+  </button>
+</div>
