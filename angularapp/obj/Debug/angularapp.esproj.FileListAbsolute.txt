@@ -1,2 +1,4 @@
 E:\ProjetosParticulares\RentHouse1\RentHouse\angularapp\obj\Debug\angularapp.esproj.SuggestedBindingRedirects.cache
 E:\ProjetosParticulares\RentHouse1\RentHouse\angularapp\obj\Debug\angularapp.esproj.CoreCompileInputs.cache
+E:\ProjetosParticulares\RentHouse\angularapp\obj\Debug\angularapp.esproj.SuggestedBindingRedirects.cache
+E:\ProjetosParticulares\RentHouse\angularapp\obj\Debug\angularapp.esproj.CoreCompileInputs.cache
