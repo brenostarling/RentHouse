@@ -24,7 +24,14 @@ namespace RentHouse.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Property>>> GetProperties()
         {
-            return await _context.Properties.ToListAsync();
+            var properties = await _context.Properties.ToListAsync();
+
+            if (properties == null)
+            {
+                return NotFound();
+            }
+
+            return properties;
         }
 
         // GET: api/Property/5
@@ -39,6 +46,114 @@ namespace RentHouse.Controllers
             }
 
             return property;
+        }
+
+        // GET: api/Property/Search
+        [HttpGet("Search")]
+        public async Task<ActionResult<IEnumerable<Property>>> SearchProperties(
+            int? id_user,
+            string type,
+            decimal? minPrice,
+            decimal? maxPrice,
+            string zipcode,
+            string street,
+            string neighborhood,
+            string city,
+            string state,
+            int? bedrooms,
+            int? bathrooms,
+            int? cargarage,
+            bool? furniture,
+            bool? pets,
+            bool? rent)
+        {
+            // Consulta inicial para obter todas as propriedades
+            IQueryable<Property> query = _context.Properties.AsQueryable();
+
+            // Aplicar filtros opcionais
+            if (id_user.HasValue)
+            {
+                query = query.Where(p => p.UserId == id_user.Value);
+            }
+
+            if (!string.IsNullOrEmpty(type))
+            {
+                query = query.Where(p => p.Type == type);
+            }
+
+            if (minPrice.HasValue)
+            {
+                query = query.Where(p => p.Price >= minPrice.Value);
+            }
+
+            if (maxPrice.HasValue)
+            {
+                query = query.Where(p => p.Price <= maxPrice.Value);
+            }
+
+            if (!string.IsNullOrEmpty(zipcode))
+            {
+                query = query.Where(p => p.ZipCode == zipcode);
+            }
+
+            if (!string.IsNullOrEmpty(street))
+            {
+                query = query.Where(p => p.Street == street);
+            }
+
+            if (!string.IsNullOrEmpty(neighborhood))
+            {
+                query = query.Where(p => p.Neighborhood == neighborhood);
+            }
+
+            if (!string.IsNullOrEmpty(city))
+            {
+                query = query.Where(p => p.City == city);
+            }
+
+            if (!string.IsNullOrEmpty(state))
+            {
+                query = query.Where(p => p.State == state);
+            }
+
+            if (bedrooms.HasValue)
+            {
+                query = query.Where(p => p.Bedrooms == bedrooms.Value);
+            }
+
+            if (bathrooms.HasValue)
+            {
+                query = query.Where(p => p.Bathrooms == bathrooms.Value);
+            }
+
+            if (cargarage.HasValue)
+            {
+                query = query.Where(p => p.CarGarage == cargarage.Value);
+            }
+
+            if (furniture.HasValue)
+            {
+                query = query.Where(p => p.Furniture == furniture.Value);
+            }
+
+            if (pets.HasValue)
+            {
+                query = query.Where(p => p.Pets == pets.Value);
+            }
+
+            if (rent.HasValue)
+            {
+                query = query.Where(p => p.Rent == rent.Value);
+            }
+
+            var properties = await query.ToListAsync();
+
+            if (properties == null || properties.Count == 0)
+            {
+                return NotFound();
+            }
+
+            return properties;
         }
 
         // POST: api/Property

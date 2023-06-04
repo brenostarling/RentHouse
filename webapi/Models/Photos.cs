@@ -1,6 +1,6 @@
 namespace RentHouse.Models
 {
-    public class Photo
+    public class Photos
     {
         public int Id { get; set; }
         public int PropertyId { get; set; }
