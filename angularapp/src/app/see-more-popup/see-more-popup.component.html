@@ -11,6 +11,7 @@
   <div class="photos">
     <span class="arrowLeft" (click)="nextPhoto()">&lt;</span>
     <img [src]="house.photos[currentPhotoIndex].path" class="image">
+    <span class="caption">{{ house.photos[currentPhotoIndex].caption }}</span>
     <span class="arrowRight" (click)="previousPhoto()">&gt;</span>
   </div>
   <div class="type">
