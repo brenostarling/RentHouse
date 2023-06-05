@@ -11,18 +11,20 @@ import { UserProfileComponent } from '../user-profile/user-profile.component';
 })
 export class NavHeaderComponent implements OnInit {
   title = 'RentHouse';
-  login = true;
+  loggedIn: boolean = false;
 
   constructor(private dialog: MatDialog) { }
 
-  ngOnInit (): void {
+  ngOnInit () {
+    this.checkUserLoggedIn();
   }
 
   @Output() toggleDrawer: EventEmitter<void> = new EventEmitter<void>();
   @Output() toggleMyPosts: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   logoff () {
-    this.login = false;
+    localStorage.removeItem('currentUser');
+    this.loggedIn = false;
     this.toggleMyPosts.emit(false);
   }
 
@@ -35,11 +37,15 @@ export class NavHeaderComponent implements OnInit {
   }
 
   openPublishPopup () {
-    const dialogRef = this.dialog.open(PublishPopupComponent, { disableClose: true });
+    if (this.isUserLoggedIn()) {
+      const dialogRef = this.dialog.open(PublishPopupComponent, { disableClose: true });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Resultado do popup:', result);
-    });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('Resultado do popup:', result);
+      });
+    } else {
+      this.openLoginPopup();
+    }
   }
 
   openLoginPopup () {
@@ -56,5 +62,14 @@ export class NavHeaderComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Resultado do popup:', result);
     });
+  }
+
+  checkUserLoggedIn () {
+    const currentUser = localStorage.getItem('currentUser');
+    this.loggedIn = !!currentUser;
+  }
+
+  isUserLoggedIn () {
+    return this.loggedIn;
   }
 }

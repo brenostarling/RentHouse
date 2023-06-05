@@ -10,6 +10,7 @@ namespace RentHouse.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class UsersController : ControllerBase
     {
         private readonly IUsersRepository _usersRepository;
@@ -36,6 +37,20 @@ namespace RentHouse.Controllers
             if (user == null)
             {
                 return NotFound();
+            }
+
+            return user;
+        }
+
+        // POST: api/Users/login
+        [HttpPost("login")]
+        public async Task<ActionResult<User>> Login(UserLoginDTO userLogin)
+        {
+            var user = await _usersRepository.GetUserByEmailAsync(userLogin.Email);
+
+            if (user == null || user.Password != userLogin.Password)
+            {
+                return BadRequest("Usuário incorreto");
             }
 
             return user;

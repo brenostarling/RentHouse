@@ -41,9 +41,9 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Microsoft.Azure.Search.Data": {
+            "Microsoft.AspNet.Cors": {
               "target": "Package",
-              "version": "[10.1.0, )"
+              "version": "[5.2.9, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",

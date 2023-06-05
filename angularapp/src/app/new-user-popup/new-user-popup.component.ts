@@ -29,15 +29,15 @@ export class NewUserPopupComponent implements OnInit {
     const user = this.userForm.value;
     console.log(user);
 
-    this.http.get(`${this.apiUrl}/Users`).subscribe(
+    this.http.post(`${this.apiUrl}/Users`, user).subscribe(
       (response) => {
-        console.log('Lista de usuários:', response);
+        console.log('Usuário criado:', response);
+        // Adicionar usuário ao localStorage
+        localStorage.setItem('currentUser', JSON.stringify(response));
       },
       (error) => {
-        console.error('Erro ao obter a lista de usuários:', error);
+        console.error('Erro ao criar usuário:', error);
       }
     );
   }
-
-
 }

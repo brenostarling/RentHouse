@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { NewUserPopupComponent } from '../new-user-popup/new-user-popup.component';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login-popup',
@@ -10,9 +12,10 @@ import { NewUserPopupComponent } from '../new-user-popup/new-user-popup.componen
 })
 
 export class LoginPopupComponent implements OnInit {
+  private apiUrl = environment.apiUrl;
   loginForm: FormGroup;
 
-  constructor(private dialog: MatDialog, private formBuilder: FormBuilder) {
+  constructor(private dialog: MatDialog, private formBuilder: FormBuilder, private http: HttpClient) {
     this.loginForm = this.formBuilder.group({
       email: '',
       password: ''
@@ -23,7 +26,18 @@ export class LoginPopupComponent implements OnInit {
 
   submitForm () {
     const login = this.loginForm.value;
-    console.log(login);
+
+    this.http.post(`${this.apiUrl}/Users/login`, login).subscribe(
+      (response: any) => {
+        console.log('Usuário logado:', response);
+
+        // Adicionar usuário ao localStorage
+        localStorage.setItem('currentUser', JSON.stringify(response));
+      },
+      (error) => {
+        console.error('Usuário ou senha incorreto:', error);
+      }
+    );
   }
 
   openNewUserPopup () {

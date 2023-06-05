@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Azure.Search.Models;
 using Microsoft.EntityFrameworkCore;
 using RentHouse.Models;
 
@@ -24,15 +23,6 @@ namespace RentHouse.Data
         public async Task<Property> GetPropertyAsync(int id)
         {
             return await _context.Properties.FindAsync(id);
-        }
-
-        public async Task<IEnumerable<Property>> SearchPropertiesAsync(SearchParameters parameters)
-        {
-            var query = _context.Properties.AsQueryable();
-
-            // Aplicar mais filtros de acordo com os parâmetros recebidos
-
-            return await query.ToListAsync();
         }
 
         public async Task CreatePropertyAsync(Property property)

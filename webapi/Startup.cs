@@ -27,33 +27,47 @@ namespace RentHouse
             services.AddScoped<IUsersRepository, UsersRepository>();
             services.AddScoped<IPhotosRepository, PhotosRepository>();
             services.AddScoped<IPropertiesRepository, PropertiesRepository>();
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+            });
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
+                app.UseCors();
                 app.UseDeveloperExceptionPage();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
+
+                app.UseCors();
+
                 app.UseHsts();
+
+                app.UseHttpsRedirection();
+
+                app.UseStaticFiles();
+
+                app.UseRouting();
+
+                app.UseAuthorization();
+
+                app.UseEndpoints(endpoints =>
+                {
+                    endpoints.MapControllers();
+                });
+
             }
-
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseCors("CorsPolicy");
-
-            app.UseRouting();
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
-
         }
     }
 }

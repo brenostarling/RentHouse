@@ -8,9 +8,9 @@
   <button mat-raised-button class="button-color" (click)="openPublishPopup()">
     <i class="fi fi-sr-house-chimney-medical"></i> Anunciar
   </button>
-  <button mat-raised-button class="button-color" [matMenuTriggerFor]="menu" *ngIf="login">
+  <button mat-raised-button class="button-color" [matMenuTriggerFor]="menu" *ngIf="isUserLoggedIn()">
     <i class="fi fi-rs-user-gear"></i> Minha conta</button>
-  <button mat-raised-button class="button-color" (click)="openLoginPopup()" *ngIf="!login">
+  <button mat-raised-button class="button-color" (click)="openLoginPopup()" *ngIf="!isUserLoggedIn()">
     <i class="fi fi-sr-id-card-clip-alt"></i> Entrar
   </button>
   <mat-menu #menu="matMenu">
