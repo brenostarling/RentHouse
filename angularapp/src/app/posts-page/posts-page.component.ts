@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { properties } from '../../utils/dadosMock';
 import { MatDialog } from '@angular/material/dialog';
-import { ContactPopupComponent } from '../contact-popup/contact-popup.component'
+import { ContactPopupComponent } from '../contact-popup/contact-popup.component';
 import { SeeMorePopupComponent } from '../see-more-popup/see-more-popup.component';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-posts-page',
@@ -10,11 +11,25 @@ import { SeeMorePopupComponent } from '../see-more-popup/see-more-popup.componen
   styleUrls: ['./posts-page.component.scss']
 })
 export class PostsPageComponent implements OnInit {
+  private apiUrl = environment.apiUrl;
+  properties: any[] = [];
 
-  properties: any[] = properties;
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private http: HttpClient) { }
 
   ngOnInit (): void {
+    this.getProperties();
+  }
+
+  getProperties (): void {
+    this.http.get<any[]>(`${this.apiUrl}/Property`).subscribe(
+      (response) => {
+        console.log(response)
+        this.properties = response;
+      },
+      (error) => {
+        console.error('Erro ao obter propriedades:', error);
+      }
+    );
   }
 
   formatLabel (value: number) {
