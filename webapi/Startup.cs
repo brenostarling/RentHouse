@@ -43,6 +43,7 @@ namespace RentHouse
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+            app.UseCors("CorsPolicy");
 
             app.UseRouting();
 
@@ -52,6 +53,7 @@ namespace RentHouse
             {
                 endpoints.MapControllers();
             });
+
         }
     }
 }
