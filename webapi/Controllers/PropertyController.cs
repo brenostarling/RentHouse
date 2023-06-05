@@ -19,6 +19,20 @@ namespace RentHouse.Controllers
             _propertiesRepository = propertiesRepository;
         }
 
+        // GET: api/Property/user/{userId}
+        [HttpGet("user/{userId}")]
+        public async Task<ActionResult<IEnumerable<Property>>> GetPropertiesByUserId(int userId)
+        {
+            var properties = await _propertiesRepository.GetPropertiesByUserIdAsync(userId);
+
+            if (properties == null)
+            {
+                return NotFound();
+            }
+
+            return properties.ToList();
+        }
+
         // GET: api/Property
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Property>>> GetProperties()
@@ -45,6 +59,34 @@ namespace RentHouse.Controllers
             }
 
             return property;
+        }
+
+        // GET: api/Property
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Property>>> GetProperties(
+            string? types,
+            decimal? maxprice,
+            decimal? minprice,
+            int? bedrooms,
+            int? bathrooms,
+            int? carParks,
+            bool? furniture,
+            bool? pets,
+            string? zipcode,
+            string? street,
+            string? neighborhood,
+            string? city,
+            string? state,
+            bool? rent)
+        {
+            var properties = await _propertiesRepository.GetFilteredPropertiesAsync(types, maxprice, minprice, bedrooms, bathrooms, carParks, furniture, pets, zipcode, street, neighborhood, city, state, rent);
+
+            if (properties == null)
+            {
+                return NotFound();
+            }
+
+            return properties.ToList();
         }
 
         // POST: api/Property
